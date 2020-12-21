@@ -1,4 +1,4 @@
-//const jest = require("jest")
+
 const Employee = require("../lib/Employee.class.js");
 
 test("creates an employee object", () => {
@@ -18,3 +18,5 @@ test("should get a name through getName()", () => {
   const employee = new Employee("joe", 89, "joe@gmail.com");
   expect(employee.getName()).toBe("joe");
 });
+
+

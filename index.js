@@ -1,5 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generatePage = require("./generatePage.js")
+let employeeArray = []
 
 // fs.writeFile('./index.html', generatePage(name, github), err => {
 //     if (err) throw new Error(err);
@@ -89,30 +91,49 @@ const internQuestions = [
 function init() {
   inquirer.prompt(managerQuestions).then((managerAnswers) => {
     console.log(managerAnswers);
-    add();
-  });
+    add()
+  })
+  setTimeout(() => {
+    
+      writeToFile("index.html", generatePage(employeeArray) )
+    
+  },30000)
 }
 
-function add() {
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, err => {
+        if (err) throw new Error(err);
+    
+        console.log('check the html');
+      });
+      
+    
+}
+
+ function add() {
   inquirer.prompt(addMember).then((addAnswer) => {
     if (addAnswer.menu === "Engineer") {
       addEngineer();
     } else if (addAnswer.menu === "Intern") {
       addIntern();
-    } //add one for finish building my team
-  });
+    } 
+    
+  }).then(() => {
+    console.log(employeeArray)
+  })
+   
 }
 
 function addEngineer() {
   inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
-    console.log(engineerAnswers);
+    employeeArray.push(engineerAnswers);
     add();
   });
 }
 
 function addIntern() {
   inquirer.prompt(internQuestions).then((internAnswers) => {
-    console.log(internAnswers);
+    employeeArray.push(internAnswers);
     add();
   });
 }
