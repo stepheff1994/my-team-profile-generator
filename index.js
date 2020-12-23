@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generatePage = require("./generatePage.js")
-let employeeArray = []
+const generatePage = require("./generatePage.js");
+let employeeArray = [];
 
 // fs.writeFile('./index.html', generatePage(name, github), err => {
 //     if (err) throw new Error(err);
@@ -89,39 +89,42 @@ const internQuestions = [
 ];
 
 function init() {
-  inquirer.prompt(managerQuestions).then((managerAnswers) => {
-    console.log(managerAnswers);
-    add()
-  })
-  setTimeout(() => {
-    
-      writeToFile("index.html", generatePage(employeeArray) )
-    
-  },30000)
+  inquirer
+    .prompt(managerQuestions)
+    .then((managerAnswers) => {
+      //console.log("answers", managerAnswers);
+      add();
+    })
+    .catch((err) => {
+      //console.log("asking quesitons error");
+      console.log(err);
+    });
 }
 
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, err => {
-        if (err) throw new Error(err);
-    
-        console.log('check the html');
-      });
-      
-    
+  fs.writeFile(fileName, data, (err) => {
+    if (err) throw new Error(err);
+
+    console.log("check the html");
+  });
 }
 
- function add() {
-  inquirer.prompt(addMember).then((addAnswer) => {
-    if (addAnswer.menu === "Engineer") {
-      addEngineer();
-    } else if (addAnswer.menu === "Intern") {
-      addIntern();
-    } 
-    
-  }).then(() => {
-    console.log(employeeArray)
-  })
-   
+function add() {
+  inquirer
+    .prompt(addMember)
+    .then((addAnswer) => {
+      if (addAnswer.menu === "Engineer") {
+        addEngineer();
+      } else if (addAnswer.menu === "Intern") {
+        addIntern();
+      } else {
+        //console.log('final employee ', employeeArray)
+        writeToFile("index.html", generatePage(employeeArray));
+      }
+    })
+    .then(() => {
+      //console.log(employeeArray);
+    });
 }
 
 function addEngineer() {
