@@ -23,7 +23,7 @@ const managerQuestions = [
   },
   {
     type: "input",
-    name: "emailAdress",
+    name: "emailAddress",
     message: "What is the manager's email adress?",
   },
   {
@@ -60,7 +60,7 @@ const engineerQuestions = [
   },
   {
     type: "input",
-    name: "emailAdress",
+    name: "emailAddress",
     message: "What is the engineer's email adress?",
   },
 ];
@@ -83,7 +83,7 @@ const internQuestions = [
   },
   {
     type: "input",
-    name: "emailAdress",
+    name: "emailAddress",
     message: "What is the intern's email adress?",
   },
 ];
@@ -92,6 +92,7 @@ function init() {
   inquirer
     .prompt(managerQuestions)
     .then((managerAnswers) => {
+      employeeArray.push(managerAnswers); 
       //console.log("answers", managerAnswers);
       add();
     })

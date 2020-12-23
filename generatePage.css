@@ -1,7 +1,20 @@
+h1 {
+  background-color: aqua;
+  text-align: center;
+  padding: 10px;
+}
+
+.card-header {
+  background-color: brown;
+  color: white;
+}
+
 .card {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 200px
+  width: 200px;
+  padding-top: 5px;
+  margin: 5px
 }
 
 .card:hover {
