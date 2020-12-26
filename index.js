@@ -87,11 +87,11 @@ function init() {
     .prompt(managerQuestions)
     .then((managerAnswers) => {
       employeeArray.push(managerAnswers); 
-      //console.log("answers", managerAnswers);
+      
       add();
     })
     .catch((err) => {
-      //console.log("asking quesitons error");
+      
       console.log(err);
     });
 }
@@ -113,13 +113,11 @@ function add() {
       } else if (addAnswer.menu === "Intern") {
         addIntern();
       } else {
-        //console.log('final employee ', employeeArray)
+        
         writeToFile("index.html", generatePage(employeeArray));
       }
     })
-    .then(() => {
-      //console.log(employeeArray);
-    });
+    
 }
 
 function addEngineer() {

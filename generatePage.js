@@ -29,7 +29,7 @@ const generatePage = (data) => {
 };
 
 function createCards(arr) {
-  console.log(arr)
+  
   let content = "";
 
   arr.forEach((employee) => {
