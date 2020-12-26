@@ -14,11 +14,15 @@ h1 {
   transition: 0.3s;
   width: 200px;
   padding-top: 5px;
-  margin: 5px
+  margin: 15px;
+  position: relative;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(236, 203, 11, 0.2);
+  opacity: 15%;
+  
+
 }
 
 .container {
